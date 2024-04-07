@@ -3,6 +3,13 @@ import { initialItems } from '../lib/constants';
 
 export const ItemsContext = createContext();
 
+/*
+The Context API has 1 big downside: no selectors. This means that if
+anything in the context value changes, all components that use that
+context value will re-render, even if they don't use the value that
+changed. This is not good for performance. We can solve this with
+Zustand or Redux.
+*/
 export default function ItemsContextProvider({ children }) {
   // optimization: If you pass a function to useState, React will only call it during initialization.
   const [items, setItems] = useState(
